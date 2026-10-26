@@ -505,8 +505,8 @@
 	<div class="article-section" data-click="article-interactive-features">
 		<h1>Interactive Features</h1>
 		<p>
-			Transformer Explainer is built to be interactive and allows you to explore the inner workings
-			of the Transformer. Here are some of the interactive features you can play with:
+			NeuralForge AI's Transformer Lab is built to be interactive and lets you explore the inner
+			workings of the Transformer. Here are some of the interactive features you can play with:
 		</p>
 
 		<ul>
@@ -533,23 +533,11 @@
 		</ul>
 	</div>
 
-	<div class="article-section" data-click="article-video">
-		<h2>Video Tutorial</h2>
-		<div class="video-container">
-			<iframe
-				src="https://www.youtube.com/embed/ECR4oAwocjs"
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen
-			>
-			</iframe>
-		</div>
-	</div>
-
 	<div class="article-section" data-click="article-implementation">
-		<h2>How is Transformer Explainer Implemented?</h2>
+		<h2>How is the Transformer Lab Implemented?</h2>
 		<p>
-			Transformer Explainer features a live GPT-2 (small) model running directly in the browser.
+			NeuralForge AI's Transformer Lab features a live GPT-2 (small) model running directly in the
+			browser.
 			This model is derived from the PyTorch implementation of GPT by Andrej Karpathy's
 			<a href="https://github.com/karpathy/nanoGPT" title="Github" target="_blank"
 				>nanoGPT project</a
@@ -565,20 +553,12 @@
 	</div>
 
 	<div class="article-section" data-click="article-credit">
-		<h2>Who developed the Transformer Explainer?</h2>
+		<h2>About NeuralForge AI</h2>
 		<p>
-			Transformer Explainer was created by
-
-			<a href="https://aereeeee.github.io/" target="_blank">Aeree Cho</a>,
-			<a href="https://www.linkedin.com/in/chaeyeonggracekim/" target="_blank">Grace C. Kim</a>,
-			<a href="https://alexkarpekov.com/" target="_blank">Alexander Karpekov</a>,
-			<a href="https://alechelbling.com/" target="_blank">Alec Helbling</a>,
-			<a href="https://zijie.wang/" target="_blank">Jay Wang</a>,
-			<a href="https://seongmin.xyz/" target="_blank">Seongmin Lee</a>,
-			<a href="https://bhoov.com/" target="_blank">Benjamin Hoover</a>, and
-			<a href="https://poloclub.github.io/polochau/" target="_blank">Polo Chau</a>
-
-			at the Georgia Institute of Technology.
+			NeuralForge AI is an interactive laboratory for understanding modern AI systems — from
+			transformer internals to the Model Context Protocol (MCP) and multi-agent workflows. The
+			source code is available on
+			<a href="https://github.com/VARSHA07-MK/neuralforge-ai" target="_blank">GitHub</a>.
 		</p>
 	</div>
 </div>
