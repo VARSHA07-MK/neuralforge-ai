@@ -26,7 +26,7 @@
 	</a>
 	<div class="links">
 		{#each links as link}
-			<a href={`${base}${link.href === '/' ? '' : link.href}`} class:active={isActive(link.href)}>
+			<a href={`${base}${link.href}`} class:active={isActive(link.href)}>
 				{link.label}
 			</a>
 		{/each}

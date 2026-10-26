@@ -67,6 +67,7 @@
 		.logo {
 			flex-shrink: 0;
 			white-space: nowrap;
+			text-decoration: none;
 			font-family: 'Jersey 10', sans-serif;
 
 			font-optical-sizing: auto;

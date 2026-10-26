@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Topbar from '~/components/Topbar.svelte';
-	import { isLoaded, userId } from '~/store';
+	import { isLoaded, userId, predictedColor, rootRem } from '~/store';
 	import Article from '~/components/article/Article.svelte';
 	import { onMount } from 'svelte';
 	import { Spinner } from 'flowbite-svelte';
@@ -10,6 +10,7 @@
 	let scrollLeft = 0;
 
 	let minScreenWidth = 1300;
+	let minColumWidth = Math.floor(minScreenWidth / 24) - rootRem * 2;
 
 	let intersectionObserver: IntersectionObserver;
 	let tobBarActive = false;
@@ -51,7 +52,10 @@
 	};
 </script>
 
-<div id="app" style={`--min-screen-width:${minScreenWidth}px;`}>
+<div
+	id="app"
+	style={`--min-screen-width:${minScreenWidth}px;--min-column-width:${minColumWidth}px;--predicted-color:${predictedColor};`}
+>
 	<div id="landing">
 		<header bind:offsetHeight={topBarHeight} style="transform: translateX({-1 * scrollLeft}px);">
 			<Topbar isActive={tobBarActive} />

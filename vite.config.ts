@@ -15,6 +15,9 @@ export default defineConfig({
 		}
 	},
 	server: {
+		// Bind IPv4 loopback so `localhost` resolves reliably in browsers.
+		// (Vite's default can bind IPv6 `::1` only, which breaks `127.0.0.1`.)
+		host: '127.0.0.1',
 		fs: {
 			// Allow serving files from one level up to the project root
 			allow: ['..']
