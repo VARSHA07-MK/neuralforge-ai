@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 	import InputForm from '~/components/InputForm.svelte';
 	import { ga } from '~/utils/event';
 	import Sampling from '~/components/Sampling.svelte';
@@ -13,9 +14,9 @@
 </script>
 
 <div class="top-bar flex w-full items-center gap-4 px-10 py-2 pb-3" class:active={isActive}>
-	<div class="logo text-bold text-gray-700" data-click="logo">
+	<a href={`${base}/`} class="logo text-bold text-gray-700" data-click="logo" title="Back to NeuralForge AI">
 		N<span class="small">EURAL</span>F<span class="small">ORGE</span> AI
-	</div>
+	</a>
 	<div class="inputs flex grow items-center">
 		<div class="input-wrapper w-full" class:active={isActive}>
 			{#if !isAboutPage}
