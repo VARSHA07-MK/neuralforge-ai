@@ -1,65 +1,110 @@
-# Transformer Explainer: Interactive Learning of Text-Generative Models
+# NeuralForge AI
 
-Transformer Explainer is an interactive visualization tool designed to help anyone learn how Transformer-based models like GPT work. It runs a live GPT-2 model right in your browser, allowing you to experiment with your own text and observe in real time how internal components and operations of the Transformer work together to predict the next tokens. Try Transformer Explainer at http://poloclub.github.io/transformer-explainer and watch a demo video on YouTube https://youtu.be/TFUc41G2ikY.<br/><br/>
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-[![arxiv badge](https://img.shields.io/badge/arXiv-2408.04619-red)](https://arxiv.org/abs/2408.04619)
+**Understand the Intelligence. Trace the Execution. Engineer the Future.**
 
-<a href="https://youtu.be/TFUc41G2ikY" target="_blank"><img width="100%" src='https://github.com/user-attachments/assets/0a4d8888-6555-4df5-bc71-77f1299115c3'></a>
+NeuralForge AI is an interactive educational and engineering laboratory for modern
+AI systems. It visualizes how transformer-based language models process text, how AI
+applications communicate with tools through the **Model Context Protocol (MCP)**, and
+how multiple AI agents collaborate to complete a task — all connected by a single
+unified execution trace.
 
-## Live Demo
+It is designed to feel like a sophisticated developer tool, not a chatbot or a
+generic AI landing page.
 
-Try Transformer Explainer: http://poloclub.github.io/transformer-explainer
+## Modules
 
-## Research Paper
+- **Transformer Lab** — a live GPT-2 model running entirely in your browser. Type your
+  own text and watch tokenization, embeddings, multi-head self-attention, the MLP, and
+  next-token probabilities update in real time.
+- **MCP Lab** — a deterministic Model Context Protocol simulator. Inspect sample tools
+  and their JSON-Schema inputs, invoke them, and watch a request travel
+  `user → host → MCP client → MCP server → tool → result`, including controlled failure
+  scenarios: invalid arguments, permission denied, timeout, and tool error.
+- **Agent Lab** — a multi-agent workflow simulator with task dependencies, parallel
+  execution, retries, timeouts, cancellation, and failure injection. *(in progress)*
+- **Trace Studio** — one typed, timestamped timeline that links transformer, MCP, and
+  agent activity for a single run, with filtering, payload inspection, and JSON export.
+  *(in progress)*
+- **Learning Center** — concise, technically accurate explanations of each concept,
+  with contextual tooltips and knowledge checks. *(in progress)*
 
-[**Transformer Explainer: Learning LLM Transformers with Interactive Visual Explanation and Experimentations**](https://dl.acm.org/doi/pdf/10.1145/3772318.3791725).
-Aeree Cho, Grace C. Kim, Alexander Karpekov, Seongmin Lee, Alec Helbling, Benjamin Hoover, Zijie J. Wang, Minsuk Kahng, Duen Horng Chau.
-_Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems._
+> ### Simulation vs. real execution
+> The **Transformer Lab runs a real GPT-2 model** via `onnxruntime-web`. The **MCP and
+> Agent labs are deterministic simulations** built for learning — every event is
+> labelled `simulated`, and no real network connection, server, or external model is
+> involved. A visualization of MCP is not itself an MCP server.
 
-## How to run locally
+## Tech stack
 
-#### Prerequisites
+SvelteKit 2 · Svelte 5 · TypeScript · Vite 7 · D3 / d3-sankey · GSAP · KaTeX ·
+onnxruntime-web · @xenova/transformers · Tailwind CSS · Vitest
 
-- Node.js v20 or higher
-- NPM v10 or higher
+## Getting started
 
-#### Steps
+**Prerequisites:** Node.js 20+ and npm 10+.
 
 ```bash
-git clone https://github.com/poloclub/transformer-explainer.git
-cd transformer-explainer
-npm install
+git clone https://github.com/VARSHA07-MK/neuralforge-ai.git
+cd neuralforge-ai
+npm install --legacy-peer-deps
 npm run dev
 ```
 
-Then, on your web browser, access http://localhost:5173.
+Then open **http://localhost:5173** in your browser.
 
-## Credits
+> `--legacy-peer-deps` is required because the Svelte toolchain and Vite 7 have an
+> overlapping peer-dependency range that npm's strict resolver rejects.
 
-Transformer Explainer was created by <a href="https://aereeeee.github.io/" target="_blank">Aeree Cho</a>, <a href="https://www.linkedin.com/in/chaeyeonggracekim/" target="_blank">Grace C. Kim</a>, <a href="https://alexkarpekov.com/" target="_blank">Alexander Karpekov</a>, <a href="https://alechelbling.com/" target="_blank">Alec Helbling</a>, <a href="https://zijie.wang/" target="_blank">Jay Wang</a>, <a href="https://seongmin.xyz/" target="_blank">Seongmin Lee</a>, <a href="https://bhoov.com/" target="_blank">Benjamin Hoover</a>, and <a href="https://poloclub.github.io/polochau/" target="_blank">Polo Chau</a> at the Georgia Institute of Technology.
+## Commands
 
-## Citation
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server at `http://localhost:5173` |
+| `npm run build` | Produce the static production build in `build/` |
+| `npm run preview` | Preview the production build locally |
+| `npm test` | Run the Vitest suite (engine/unit tests) |
+| `npm run check` | Type-check with `svelte-check` |
+| `npm run lint` | Prettier + ESLint checks |
 
-```bibTeX
-@inproceedings{cho2026transformer,
-  title={Transformer Explainer: Learning LLM Transformers with Interactive Visual Explanation and Experimentation},
-  author={Cho, Aeree and Kim, Grace C and Karpekov, Alexander and Lee, Seongmin and Helbling, Alec and Hoover, Benjamin and Wang, Zijie J and Kahng, Minsuk and Chau, Duen Horng},
-  booktitle={Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems},
-  pages={1--21},
-  year={2026}
-}
+## Testing
+
+Simulation engines (MCP, agents, trace) are pure, deterministic TypeScript with no DOM
+dependencies, which makes them directly unit-testable:
+
+```bash
+npm test
 ```
 
-## License
+The current suite covers the MCP request-path event sequence, all four failure modes,
+run determinism, and the guided scenario's sample calculation.
 
-The software is available under the [MIT License](https://github.com/poloclub/transformer-explainer/blob/main/LICENSE).
+## Deployment
 
-## Contact
+The app is a fully static site (`@sveltejs/adapter-static`), output to `build/`. For
+GitHub Pages the production base path is `/neuralforge-ai` (configured in
+`svelte.config.js`). Build and deploy:
 
-If you have any questions, feel free to [open an issue](https://github.com/poloclub/transformer-explainer/issues/new/choose) or contact [Aeree Cho](https://aereeeee.github.io/) or any of the contributors listed above.
+```bash
+npm run build
+# deploy the contents of build/ to your static host
+```
 
-## More AI explainers to check out
+## Project status
 
-- [**Diffusion Explainer**](https://poloclub.github.io/diffusion-explainer) for learning how Stable Diffusion transforms text prompt into image
-- [**CNN Explainer**](https://poloclub.github.io/cnn-explainer)
-- [**GAN Lab**](https://poloclub.github.io/ganlab) for playing with Generative Adversarial Networks in browser
+| Area | Status |
+| --- | --- |
+| Transformer Lab (real GPT-2) | ✅ Working |
+| MCP simulation engine + tests | ✅ Done |
+| MCP Lab UI | 🚧 In progress |
+| Agent Lab, Trace Studio, Learning Center | 🚧 Planned |
+
+See [`docs/architecture.md`](docs/architecture.md) for the full design and roadmap.
+
+## Acknowledgements & license
+
+NeuralForge AI is released under the MIT License (see [`LICENSE`](LICENSE)).
+
+The in-browser transformer visualization is built on the open-source
+**Transformer Explainer** by the Polo Club of Data Science, used under the MIT License.
+NeuralForge AI extends it with original work: the MCP simulator, the multi-agent
+workflow engine, the unified Trace Studio, and the guided scenario.

@@ -5,11 +5,11 @@
 <header class="flex flex-shrink-0 items-center justify-between bg-blue-950 p-2 px-5">
 	<div class="flex gap-5">
 		<div class="logo">
-			<a href="/" class="text-l font-semibold text-white">Transformer Explainer</a>
+			<a href="/" class="text-l font-semibold text-white">NeuralForge AI</a>
 		</div>
 	</div>
 	<div class="flex gap-5">
-		<a href="https://github.gatech.edu/acho75/t_viz_experimental" class="inline-flex">
+		<a href="https://github.com/VARSHA07-MK/neuralforge-ai" class="inline-flex">
 			<GithubSolid class="h-5 w-5 text-white" />
 		</a>
 	</div>
